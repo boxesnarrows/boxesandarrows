@@ -7,7 +7,7 @@ script:
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
 deploy:
   provider: pages
-  local-dir: ./_site
+  local-dir: ./site
   target-branch: release
   email: deploy@travis-ci.org
   name: Deployment Bot

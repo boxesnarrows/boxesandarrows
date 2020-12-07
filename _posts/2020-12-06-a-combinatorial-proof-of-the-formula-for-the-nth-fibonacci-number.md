@@ -7,7 +7,8 @@ tags:
     - fibonacci-numbers
 
 sidebar: []
-image: {{ assets/images/tree-expansion.png | relative_url }}
+image: 
+    path: "{{ assets/images/tree-expansion.png | relative_url }}"
 ---
 
 The aim of this post is to present a combinatorial proof of the formula for the $n$th fibonacci number. More generally, let $X\_n$ be a sequence such that $X_0, X_1$ are constants and $X\_n = X\_{n - 1} + X\_{n - 2}$ for $n \geq 2$. We shall prove that

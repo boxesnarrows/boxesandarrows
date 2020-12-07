@@ -24,7 +24,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   Math, logic & related topics.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-favicon: "/favicon.png"
+favicon: "/assets/icons/icon.png"
+logo: "/assets/icons/icon.png"
 
 # Build settings
 theme: jekyll-theme-yat

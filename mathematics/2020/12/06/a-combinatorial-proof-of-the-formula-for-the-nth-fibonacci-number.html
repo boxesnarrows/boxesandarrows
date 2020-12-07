@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>A combinatorial proof of the formula for the nth Fibonacci number | Boxes and arrows</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="A combinatorial proof of the formula for the nth Fibonacci number">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="The aim of this post is to present a combinatorial proof of the formula for the $n$th fibonacci number. More generally, let $X_n$ be a sequence such that $X_0, X_1$ are constants and $X_n = X_{n - 1} + X_{n - 2}$ for $n \geq 2$. We shall prove that">
+<meta property="og:description" content="The aim of this post is to present a combinatorial proof of the formula for the $n$th fibonacci number. More generally, let $X_n$ be a sequence such that $X_0, X_1$ are constants and $X_n = X_{n - 1} + X_{n - 2}$ for $n \geq 2$. We shall prove that">
+<link rel="canonical" href="/mathematics/2020/12/06/a-combinatorial-proof-of-the-formula-for-the-nth-fibonacci-number.html">
+<meta property="og:url" content="/mathematics/2020/12/06/a-combinatorial-proof-of-the-formula-for-the-nth-fibonacci-number.html">
+<meta property="og:site_name" content="Boxes and arrows">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-12-06T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="A combinatorial proof of the formula for the nth Fibonacci number">
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"/mathematics/2020/12/06/a-combinatorial-proof-of-the-formula-for-the-nth-fibonacci-number.html"},"description":"The aim of this post is to present a combinatorial proof of the formula for the $n$th fibonacci number. More generally, let $X_n$ be a sequence such that $X_0, X_1$ are constants and $X_n = X_{n - 1} + X_{n - 2}$ for $n \\geq 2$. We shall prove that","@type":"BlogPosting","url":"/mathematics/2020/12/06/a-combinatorial-proof-of-the-formula-for-the-nth-fibonacci-number.html","headline":"A combinatorial proof of the formula for the nth Fibonacci number","dateModified":"2020-12-06T00:00:00+00:00","datePublished":"2020-12-06T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+  <!-- and it's easy to individually load additional languages -->
+  <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Boxes and arrows">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="Boxes and arrows" src="/favicon.png" onerror="this.style.display='none'">
+  Boxes and arrows
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/">HOME</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/tags.html">TAGS</a><a class="page-link" href="/about/">ABOUT</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  (function() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      localStorage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = localStorage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: false, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    var nightModeOption = 'auto' || 'auto';
+    nightModeOption = nightModeOption.toLowerCase();
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      handleThemeToggle(nightModeOption == 'on');
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">A combinatorial proof of the formula for the nth Fibonacci number</h1>
+  <h3 class="post-subtitle"></h3>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2020-12-06T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 06 Dec 2020
+    </time>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#combinatorics">#combinatorics</a><a class="post-tag" href="/tags.html#fibonacci-numbers">#fibonacci-numbers</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>The aim of this post is to present a combinatorial proof of the formula for the $n$th fibonacci number. More generally, let $X_n$ be a sequence such that $X_0, X_1$ are constants and $X_n = X_{n - 1} + X_{n - 2}$ for $n \geq 2$. We shall prove that</p>
+
+<p>$$ X_n = \sum^{\left\lfloor \frac{n - 1}{2} \right\rfloor}_{k = 0} \binom{n - k - 1}{k} X_1 + \sum^{\left\lfloor \frac{n - 2}{2} \right\rfloor}_{k = 0} \binom{n - k - 2}{k} X_0 \; ,$$</p>
+
+<p>where $\left\lfloor x \right\rfloor$ is the <em>floor function</em>, that is, it is defined as the greatest integer less than or equal to $x$.</p>
+
+<p>We can compute $X_n$ by using the relation $X_n = X_{n - 1} + X_{n - 2}$ to expand the values recursively, until no term left can be expanded any further (that is, we have only $X_0$s and $X_1$s). We can look at this computation as if we were creating a tree from bifurcations of each term we expand. Consider the image below:</p>
+
+<p><img src="/assets/images/tree-expansion.png" alt="expansion-tree" style="width: 50%; height: auto;"></p>
+
+<p>We can see, looking once again at the image above, that each final node ($X_0$ or $X_1$) has a unique path leading to it, which represents the previous (and expanded) terms from which such term originated (recursively) from. A path, here, consists in an ordered list of choices, which are either left or right. The left choice, for each node $X_k$, yields $X_{k - 1}$, and the right choice, $X_{k - 2}$. The leftmost $X_1$, for instance, originates from the path <strong>[left, left, left, left]</strong>, while the second $X_0$ (from the left) originates from <strong>[left, right, right]</strong>. To make an analogy, if we created a recursive function to compute the list of $X_0$s and $X_1$s yielded from the expansion of $X_n$, which would call itself on the values $X_{n - 1}$ and $X_{n - 2}$ recursively, then the path of each item would be the stack of calls from which it originated:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    f(5) -&gt; [f(4), f(3)] : f(3) -&gt; [f(2), f(1)] : f(2) -&gt; [f(0)] : f(0) -&gt; X0
+
+    Stack of X0:
+        f(5) -&gt; f(3) -&gt; f(2) -&gt; f(0)
+</code></pre></div></div>
+
+<p>With that, we can solve the problem by counting the number of paths yielding a $X_0$ or a $X_1$, for all possible paths occur in an expansion.</p>
+
+<p>First, let us count the number of possible paths leading to $X_1$. Before counting the paths, let’s consider them grouped by number of left choices and right choices. Such possible pairs of values must be the nonnegative integer solutions for</p>
+
+<p>$$n - 2k - j = 1 \; ,$$</p>
+
+<p>where $k$ is the number of left choices ($n - 2$) and $j$ the number of right choices ($n - 1$). To compute all the pairs of solutions, since the equation has only two variables, we just range over all the (possible) values of $k$, from $0$ to $\left\lfloor{\frac{n - 1}{2}} \right\rfloor$, and obtain $j$ from $j = n - 2k - 1$. With all pair of solutions $(j, k)$, we have all possible configurations of paths which lead to $X_1$, up to number of choices for each option (left or right). Now we need to count the number of paths corresponding to each pair. To do that, we just need to consider the following: for each pair $(j, k)$, all such paths consist of $j + k$ choices. Moreover, if we choose the position (among the $j + k$ available) of each of the $j$ left choices, the path will be completely determined, for the $k$ right choices must fill the remaining positions, and permutating identical elements makes no difference. With that, we conclude that the number of distinct paths leading to $X_1$ with $k$ left choices and $j$ right choices is $\binom{j + k}{j} = \binom{j + k}{k}$. Since we have the relation $j = n - 2k - 1$, the binomial coefficient can be rewritten as $\binom{n - k - 1}{k}$. We can therefore conclude that the number of distinct paths leading to $X_1$ is</p>
+
+<p>$$\sum^{\left\lfloor \frac{n - 1}{2} \right\rfloor}_{k = 0} \binom{n - k - 1}{k} \; .$$</p>
+
+<p>One might be tempted to conclude that the acse of $X_0$ is analogous, with equation</p>
+
+<p>$$n - 2k - j = 0 \; .$$</p>
+
+<p>The equation above, however, isn’t appropriate. Consider, for instance, the two paths below:</p>
+
+<p><img src="/assets/images/paths.png" alt="expansion-tree" style="width: 50%; height: auto;"></p>
+
+<p>We have a path <strong>[left, right]</strong> leading to $X_0$, but whose permutation <strong>[right, left]</strong> is invalid! If we choose right first, we reach $X_1$ and there’s nothing else to do. In other words, if we count all paths with $j$ left choices and $k$ right choices, we’ll be counting invalid paths, that is, paths which don’t lead to $X_0$. In order to solve this problem, consider the following: every path leading to $X_0$ must contain a $X_2$, for if the last choice were <strong>left</strong>, we’d have $X_{k - 1} = X_0$, but then $k = 1$! Hence we conclude the last choice must always be <strong>right</strong>, which implies that the node before $X_0$ must be $X_2$. We must therefore count paths leading to $X_2$ instead.</p>
+
+<p>Our equation becomes</p>
+
+<p>$$n - 2k - j = 2 \; ,$$</p>
+
+<p>and everything follows analogously to the case of $X_1$, so that we obtain the formula</p>
+
+<p>$$\sum^{\left\lfloor \frac{n - 2}{2} \right\rfloor}_{k = 0} \binom{n - k - 2}{k} \; .$$</p>
+
+<p>We can therefore conclude that the expansion of $X_n$, when carried out, will yield the respective amounts of $X_1$s and $X_0$s, and hence we conclude that</p>
+
+<p>$$X_n = \sum^{\left\lfloor \frac{n - 1}{2} \right\rfloor}_{k = 0} \binom{n - k - 1}{k} X_1 + \sum^{\left\lfloor \frac{n - 2}{2} \right\rfloor}_{k = 0} \binom{n - k - 2}{k} X_0 \; .$$</p>
+
+<p>The special case $X_0 = 0$, $X_1 = 1$ is that of the Fibonacci sequence:
+$$F_n = \sum^{\left\lfloor \frac{n - 1}{2} \right\rfloor}_{k = 0} \binom{n - k - 1}{k} \; .$$</p>
+
+<h4 id="relation-to-pascals-triangle">Relation to Pascal’s Triangle</h4>
+
+<p>One of the properties of Pascal’s Triangle is that the sum of the elements in its $n$th “shallow diagonal” is the $(n + 1)$th Fibonacci number.</p>
+
+<p><img src="/assets/images/pascal-triangle-fib.png" alt="expansion-tree" style="width: 50%; height: auto;"></p>
+
+<p>Note that the $n$th shallow diagonal has its length increased by $1$ every $2$ lines, hence its length is given by $\left\lfloor \frac{n}{2} \right\rfloor$, and the value of the $k$th element (from right to left) of such line is $\binom{n - k}{k}$, hence both expressions coincide (for $F_{n + 1}$ instead of $F_n$).</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<span></span><a class="next" href="/2020/12/06/welcome.html" title="Welcome!">Welcome!</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/mathematics/2020/12/06/a-combinatorial-proof-of-the-formula-for-the-nth-fibonacci-number.html" title="Welcome!">A combinatorial proof of the formula for the nth Fibonacci number</a></li>
+<li><a class="post-link" href="/2020/12/06/welcome.html" title="Welcome!">Welcome!</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --></section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+      <div> @</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

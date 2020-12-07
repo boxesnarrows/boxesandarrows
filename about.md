@@ -1,17 +1,7 @@
 ---
 title: About
 permalink: /about/
+layout: about
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+The purpose of this blog is to keep notes, thoughts and explanations on topics of my interest, which are, broadly speaking, Mathematics, Computability and Logic. The picture in the home page is the painting *Das Eismeer* (The Sea of Ice) by the german artist Caspar David Friedrich.

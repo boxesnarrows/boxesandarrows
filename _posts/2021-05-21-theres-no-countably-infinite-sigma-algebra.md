@@ -8,10 +8,10 @@ tags:
 
 sidebar: []
 image: 
-    path: "/assets/images/tree-expansion.png"
+    path: "/assets/images/expansion-tree-collection.png"
 ---
 
-To show this, let $\mathcal{A} \subseteq $\mathcal{P}{(X)}$ be our $\sigma$-algebra. If we could show there's a countable family $\mathcal{F} = \\{ A_i  \\}$ of disjoint sets in $\mathcal{A}$, we could establish a bijection between $2^\mathbb{N}$ and the unions in $\mathcal{F}$ as follows:
+To show this, let $\mathcal{A} \subseteq \mathcal{P}{(X)}$ be our $\sigma$-algebra. If we could show there's a countable family $\mathcal{F} = \\{ A_i  \\}$ of disjoint sets in $\mathcal{A}$, we could establish a bijection between $2^\mathbb{N}$ and the unions in $\mathcal{F}$ as follows:
 
 $$
 A^f_i =
@@ -39,3 +39,4 @@ Now, since a tree with $2$ branches at each node and paths of length at most $n$
 Now, we apply Kőnig's lemma: since our tree is infinite and finitely branching (more precisely, bifurcating), we must have an infinite path. Then, considering such path, since each node bifurcates, for the $i$th node in the path, we have a bifurcation where one branch leads to some other node and the other to the $(i + 1)$th node in the path, and we collect the subset corresponding to such other node. We thus have a sequence $s_1, s_2, \dots$ of collected subsets such that (denoting by $p_i$ the subset corresponding to the $i$th node in our infinite path) $s_i \subseteq p_{i - 1}$, $p_i \cap s_i = \emptyset$, which follows from the cosntruction of our tree, hence $d_1, d_2, \dots$ is the desired infinite set of disjoint sets.
 
 <img src="{{ 'assets/images/infinite-path-collection.png' | relative_url }}" alt="expansion-tree" style="width: 20%; height: auto;">
+

@@ -28,12 +28,99 @@
 <link rel="shortcut icon" href="/assets/icons/icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
-  <!-- and it's easy to individually load additional languages -->
-  <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Boxes and arrows">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
 <script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
@@ -217,18 +304,22 @@
   (function() {
     var sw = document.getElementById('theme-switch');
     var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
     var themeData = loadThemeData();
 
     function saveThemeData(data) {
-      localStorage.setItem('theme', JSON.stringify(data));
+      storage.setItem('theme', JSON.stringify(data));
     }
 
     function loadThemeData() {
-      var data = localStorage.getItem('theme');
+      var data = storage.getItem('theme');
       try {
         data = JSON.parse(data ? data : '');
       } catch(e) {
-        data = { nightShift: false, autoToggleAt: 0 };
+        data = { nightShift: undefined, autoToggleAt: 0 };
         saveThemeData(data);
       }
       return data;
@@ -281,9 +372,6 @@
       handleThemeToggle(event.target.checked);
     });
 
-    var nightModeOption = 'auto' || 'auto';
-    nightModeOption = nightModeOption.toLowerCase();
-
     if (nightModeOption == 'auto') {
       var data = autoThemeToggle();
 
@@ -297,7 +385,11 @@
     } else if (nightModeOption == 'manual') {
       handleThemeToggle(themeData.nightShift);
     } else {
-      handleThemeToggle(nightModeOption == 'on');
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
     }
   })();
 </script>
@@ -427,6 +519,7 @@ $$F_n = \sum^{\left\lfloor \frac{n - 1}{2} \right\rfloor}_{k = 0} \binom{n - k -
       <div>Related Articles</div>
       <ul>
         <li><a class="post-link" href="/mathematics/2020/12/06/a-combinatorial-proof-of-the-formula-for-the-nth-fibonacci-number.html" title="Welcome!">A combinatorial proof of the formula for the nth Fibonacci number</a></li>
+<li><a class="post-link" href="/mathematics/2021/05/21/theres-no-countably-infinite-sigma-algebra.html" title="Welcome!">There's no countably infinite sigma algebra!</a></li>
 <li><a class="post-link" href="/2020/12/06/welcome.html" title="Welcome!">Welcome!</a></li>
 </ul>
     </div>
@@ -445,7 +538,7 @@ $$F_n = \sum^{\left\lfloor \frac{n - 1}{2} \right\rfloor}_{k = 0} \binom{n - k -
 
   <div class="wrapper">
     <div class="site-footer-inner">
-      <div> @</div>
+      <div> </div>
       <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
       generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
       another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>

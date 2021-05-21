@@ -47,10 +47,6 @@ pre, code { font-size: 13.125px; color: #454545; }
 
 pre { overflow-x: auto; position: relative; background-color: #f0f0f0; }
 
-pre::before { content: attr(data-lang); color: #fff; background-color: #ff4e00; padding: 0 .5em; border-radius: 0 2px; text-transform: uppercase; text-align: center; min-width: 32px; display: inline-block; position: absolute; right: 0; }
-
-pre code > table pre::before { display: none; }
-
 pre > code { display: inline-block; padding: 20px !important; background-color: transparent; border: 0; }
 
 pre table, pre pre { margin-bottom: 0; }
@@ -64,7 +60,7 @@ pre table .gutter, pre table .code, pre pre .gutter, pre pre .code { padding: 6p
 .wrapper:after { content: ""; display: table; clear: both; }
 
 /** Tables */
-table { margin-bottom: 30px; width: 100%; text-align: left; color: #525252; border-collapse: collapse; }
+table { display: block; margin-bottom: 30px; width: 100%; text-align: left; color: #525252; border-collapse: collapse; overflow: auto; }
 
 table tr:nth-child(even) { background-color: #f7f7f7; }
 
@@ -204,7 +200,7 @@ html[data-scroll-status='down'] .framework .sidebar { top: 20px; }
 
 .post .post-header .post-meta { color: #808080; }
 
-.post .post-content { margin-bottom: 30px; overflow-x: auto; overflow-wrap: normal; word-wrap: normal; word-break: normal; }
+.post .post-content { margin-bottom: 30px; overflow-wrap: normal; word-wrap: normal; word-break: normal; }
 
 .post .post-content h2 { font-size: 28px; }
 
@@ -345,9 +341,11 @@ html[data-theme="dark"] .site-header .site-brand .site-brand-inner, html[data-th
 
 html[data-theme="dark"] .site-header .site-nav .page-link { color: #f8f8f8; }
 
-html[data-theme="dark"] .site-header .ct-language-dropdown { color: #f8f8f8; background-color: #0e0e0e; }
+html[data-theme="dark"] .site-header .ct-language-dropdown { color: #f8f8f8; background-color: #0e0e0e; box-shadow: 0 0 3px 1px #0000005b; }
 
 html[data-theme="dark"] .site-header .ct-language-selected, .ct-language-dropdown html[data-theme="dark"] .site-header li:hover, html[data-theme="dark"] .site-header .ct-language-dropdown li:hover { background-color: #222 !important; }
+
+@media screen and (max-width: 800px) { html[data-theme="dark"] .site-header .menu-icon > svg { fill: #bbbbbb; } html[data-theme="dark"] .site-header .site-nav input:checked ~ .trigger { background-color: #090909; } }
 
 html[data-theme="dark"] .site-footer { color: #fff; background-color: #000; }
 
@@ -399,7 +397,7 @@ html[data-theme="dark"] .post-menu .post-menu-content ul a { color: #bbb; }
 
 html[data-theme="dark"] .post-menu .post-menu-content ul a:hover { color: #fff !important; }
 
-.theme-toggle { position: relative; width: 107.1px; margin-top: 10px; margin-right: 60px; margin-left: auto; transition: 0.1s all ease-in-out; /* Toggle */ }
+.theme-toggle { position: relative; width: 107.1px; margin-top: 10px; margin-right: 60px; margin-left: auto; transition: 0.3s cubic-bezier(0.4, 0.03, 0, 1); /* Toggle */ }
 
 .theme-toggle label, .theme-toggle .toggle { border-radius: 100px; }
 
@@ -539,5 +537,11 @@ body { top: 0px !important; }
 .ct-language:hover .ct-language-dropdown { margin-top: 8px; max-height: 10000px; visibility: visible; box-shadow: 0 0 9px 3px rgba(0, 0, 0, 0.06); }
 
 .ct-language:before { content: "\f1ab  \f0d7"; font-family: FontAwesome; }
+
+.gitment-container { color: #787878 !important; }
+
+.gitment-comment-main, .gitment-editor-main { background-color: #fff; border-radius: 3px !important; }
+
+.gitment-heart-icon { fill: #ff0808; }
 
 /*# sourceMappingURL=main.css.map */

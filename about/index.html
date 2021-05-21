@@ -16,20 +16,109 @@
 <link rel="canonical" href="/about/">
 <meta property="og:url" content="/about/">
 <meta property="og:site_name" content="Boxes and arrows">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="/assets/images/chalk-cliffs-cut.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/assets/images/chalk-cliffs-cut.png">
 <meta property="twitter:title" content="About">
 <script type="application/ld+json">
-{"description":"Math, logic &amp; related topics.","@type":"WebSite","url":"/about/","name":"Boxes and arrows","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/icons/icon.png"}},"headline":"About","@context":"https://schema.org"}</script>
+{"description":"Math, logic &amp; related topics.","@type":"WebSite","image":"/assets/images/chalk-cliffs-cut.png","url":"/about/","name":"Boxes and arrows","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/assets/icons/icon.png"}},"headline":"About","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="/assets/icons/icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
-  <!-- and it's easy to individually load additional languages -->
-  <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Boxes and arrows">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
 </head>
 <body>
 
@@ -212,18 +301,22 @@
   (function() {
     var sw = document.getElementById('theme-switch');
     var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
     var themeData = loadThemeData();
 
     function saveThemeData(data) {
-      localStorage.setItem('theme', JSON.stringify(data));
+      storage.setItem('theme', JSON.stringify(data));
     }
 
     function loadThemeData() {
-      var data = localStorage.getItem('theme');
+      var data = storage.getItem('theme');
       try {
         data = JSON.parse(data ? data : '');
       } catch(e) {
-        data = { nightShift: false, autoToggleAt: 0 };
+        data = { nightShift: undefined, autoToggleAt: 0 };
         saveThemeData(data);
       }
       return data;
@@ -276,9 +369,6 @@
       handleThemeToggle(event.target.checked);
     });
 
-    var nightModeOption = 'auto' || 'auto';
-    nightModeOption = nightModeOption.toLowerCase();
-
     if (nightModeOption == 'auto') {
       var data = autoThemeToggle();
 
@@ -292,7 +382,11 @@
     } else if (nightModeOption == 'manual') {
       handleThemeToggle(themeData.nightShift);
     } else {
-      handleThemeToggle(nightModeOption == 'on');
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
     }
   })();
 </script>
@@ -316,7 +410,7 @@
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      <p>The purpose of this blog is to keep notes, thoughts and explanations on topics of my interest, which are, broadly speaking, Mathematics, Computability and Logic. The picture in the home page is of the painting <em>Das Eismeer</em> (The Sea of Ice) by the german artist Caspar David Friedrich.</p>
+      <p>The purpose of this blog is to keep notes and thoughts on topics of my interest, which are, broadly speaking, Mathematics, Computability and Logic (the last two quite recent!). The picture in the home page is of the painting <em>Das Eismeer</em> (The Sea of Ice) by the german artist Caspar David Friedrich.</p>
 
 
 
@@ -460,7 +554,7 @@
 
   <div class="wrapper">
     <div class="site-footer-inner">
-      <div> @</div>
+      <div> </div>
       <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
       generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
       another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>

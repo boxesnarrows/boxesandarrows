@@ -49,7 +49,7 @@ GEM
       jekyll (>= 3.6, < 5.0)
       nokogiri (~> 1.6)
       rainbow (~> 3.0)
-    jekyll-theme-yat (1.6.4)
+    jekyll-theme-yat (1.7.0)
       jekyll (> 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-paginate (~> 1.1)
@@ -115,7 +115,7 @@ DEPENDENCIES
   jekyll-seo-tag (~> 2.1)
   jekyll-sitemap
   jekyll-spaceship (~> 0.9.7)
-  jekyll-theme-yat (~> 1.6.4)
+  jekyll-theme-yat (~> 1.7.0)
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)

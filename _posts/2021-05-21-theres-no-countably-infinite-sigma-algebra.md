@@ -8,7 +8,7 @@ tags:
 
 sidebar: []
 image: 
-    path: "/assets/images/expansion-tree-collection.png"
+    path: "/assets/images/infinite-path-collection.png"
 ---
 
 To show this, let $\mathcal{A} \subseteq \mathcal{P}{(X)}$ be our $\sigma$-algebra. If we could show there's a countable family $\mathcal{F} = \\{ A_i  \\}$ of disjoint sets in $\mathcal{A}$, we could establish a bijection between $2^\mathbb{N}$ and the unions in $\mathcal{F}$ as follows:

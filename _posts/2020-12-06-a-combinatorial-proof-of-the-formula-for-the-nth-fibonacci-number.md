@@ -1,14 +1,14 @@
 ---
 title: A combinatorial proof of the formula for the nth Fibonacci number
 layout: post
-categories: mathematics
+categories:
+- mathematics
 tags:
-    - combinatorics
-    - fibonacci-numbers
-
+- combinatorics
+- fibonacci-numbers
 sidebar: []
-image: 
-    path: "/assets/images/tree-expansion.png"
+image:
+  path: "/assets/images/tree-expansion.png"
 ---
 
 The aim of this post is to present a combinatorial proof of the formula for the $n$th fibonacci number. More generally, let $X\_n$ be a sequence such that $X_0, X_1$ are constants and $X\_n = X\_{n - 1} + X\_{n - 2}$ for $n \geq 2$. We shall prove that
